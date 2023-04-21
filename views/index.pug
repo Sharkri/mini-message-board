@@ -2,12 +2,13 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{ title }
-  each message in messages
-    div
-      p= message.user
-      p= message.added
-      p= message.text
-    br
+  p Welcome to #{ title }!
+
+  ul.message-board
+    each message in messages
+      li.message
+        p= message.user
+        p= message.date.string
+        p= message.text
 
   a(href="/new") Submit a message

@@ -1,19 +1,17 @@
 const express = require("express");
+const format = require("date-fns/format");
+const isThisYear = require("date-fns/isThisYear");
+const isToday = require("date-fns/isToday");
 
 const router = express.Router();
 
-const messages = [
-  {
-    text: "Hi there!",
-    user: "Amando",
-    added: new Date(),
-  },
-  {
-    text: "Hello World!",
-    user: "Charles",
-    added: new Date(),
-  },
-];
+function getFormattedDate(date = new Date()) {
+  if (isToday(date)) return `Today at ${format(date, "h:mm a")}`;
+
+  return format(date, `MMM dd,${isThisYear(date) ? "" : " yyyy"} h:mm a`);
+}
+
+const messages = [];
 
 /* GET home page. */
 router.get("/", (req, res, next) => {
@@ -23,8 +21,17 @@ router.get("/", (req, res, next) => {
 router.post("/new", (req, res, next) => {
   const { name, message } = req.body;
 
+  const currentDate = new Date();
+
   if (name && message) {
-    messages.push({ user: name, text: message, added: new Date() });
+    messages.push({
+      user: name,
+      text: message,
+      date: {
+        added: currentDate,
+        string: getFormattedDate(currentDate),
+      },
+    });
   }
 
   res.redirect("/");
