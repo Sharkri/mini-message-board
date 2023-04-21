@@ -5,11 +5,11 @@ block content
   form.create-message(action="/new", method="POST")
     label
       | Your Name:
-      input(type="text", name="name")
+      input(type="text", name="name", required)
 
     label
       | Message:
-      textarea(name="message", rows=3)
+      textarea(name="message", rows=3, required)
 
     button(type="submit") Submit message
     a(href="/") Go back
