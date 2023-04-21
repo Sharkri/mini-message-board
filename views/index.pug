@@ -9,9 +9,9 @@ block content
     each message in messages
       li.message
         .message-info
-          span.user-name= message.user
+          span.user-name= message.author
           span.message-date(title=message.date.added)= message.date.string
-        p= message.text
+        p= message.messageText
   else
     p.no-messages= "No messages yet, be the first."
 

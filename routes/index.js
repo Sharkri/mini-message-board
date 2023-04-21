@@ -1,52 +1,27 @@
 const express = require("express");
-const format = require("date-fns/format");
-const isThisYear = require("date-fns/isThisYear");
-const isToday = require("date-fns/isToday");
+const Message = require("../models/message");
 
 const router = express.Router();
 
-function convertDateToLocal(date) {
-  return new Date(new Date(date).toLocaleString());
-}
-
-function getFormattedDate(date) {
-  if (isToday(date)) return `Today at ${format(date, "h:mm a")}`;
-
-  return format(date, `MMM dd,${isThisYear(date) ? "" : " yyyy"} h:mm a`);
-}
-
-const messages = [];
-
-/* GET home page. */
-router.get("/", (req, res, next) => {
-  const localTimeMessages = messages.map((msg) => ({
-    ...msg,
-    date: {
-      ...msg.date,
-      string: getFormattedDate(convertDateToLocal(msg.date.added)),
-    },
-  }));
+router.get("/", async (req, res, next) => {
+  const messages = await Message.find().sort({ "date.added": -1 });
 
   res.render("index", {
     title: "Mini Message Board",
-    messages: localTimeMessages,
+    messages,
   });
 });
 
 router.post("/new", (req, res, next) => {
-  const { name, message } = req.body;
+  const { name, message: messageText } = req.body;
 
-  const currentDate = Date.now();
+  const message = new Message({
+    author: name,
+    messageText,
+    date: { added: new Date() },
+  });
 
-  if (name && message) {
-    messages.push({
-      user: name,
-      text: message,
-      date: {
-        added: currentDate,
-      },
-    });
-  }
+  message.save();
 
   res.redirect("/");
 });
