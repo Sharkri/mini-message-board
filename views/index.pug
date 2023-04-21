@@ -5,10 +5,14 @@ block content
   p Welcome to #{ title }!
 
   ul.message-board
+  if messages.length
     each message in messages
       li.message
-        p= message.user
-        p= message.date.string
+        .message-info
+          span.user-name= message.user
+          span.message-date(title=message.date.added)= message.date.string
         p= message.text
+  else
+    p.no-messages= "No messages yet, be the first."
 
   a(href="/new") Submit a message

@@ -62,6 +62,29 @@ textarea:focus {
   gap: 12px;
 }
 
+.no-messages {
+  color: grey;
+  font-style: italic;
+}
+
+.message {
+  padding: 12px;
+}
+
+.message-info {
+  display: flex;
+  gap: 8px;
+}
+
+.message-date {
+  color: grey;
+  font-size: 14px;
+}
+
+.user-name {
+  font-weight: bold;
+}
+
 /* new message form */
 .create-message {
   display: flex;
