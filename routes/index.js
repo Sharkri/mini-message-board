@@ -4,7 +4,7 @@ const Message = require("../models/message");
 const router = express.Router();
 
 router.get("/", async (req, res, next) => {
-  const messages = await Message.find().sort({ "date.added": -1 });
+  const messages = await Message.find().sort({ "date.added": 1 });
 
   res.render("index", {
     title: "Mini Message Board",
