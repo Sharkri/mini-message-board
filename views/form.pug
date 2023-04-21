@@ -4,12 +4,12 @@ block content
   h1= "Submit a message"
   form.create-message(action="/new", method="POST")
     label
-      | Name:
+      | Your Name:
       input(type="text", name="name")
 
     label
       | Message:
-      input(type="text", name="message")
+      textarea(name="message", rows=3)
 
     button(type="submit") Submit message
     a(href="/") Go back

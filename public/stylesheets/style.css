@@ -21,11 +21,18 @@ button {
   border: none;
 }
 
-input {
+input,
+textarea {
   outline: none;
   border-radius: 4px;
   border: 1px solid rgba(0, 0, 0, 0.4);
   padding: 6px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 300px;
 }
 
 a {
@@ -34,7 +41,8 @@ a {
   font-weight: bold;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   border-color: #0284c7;
 }
 
