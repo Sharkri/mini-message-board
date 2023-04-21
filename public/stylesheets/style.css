@@ -14,6 +14,14 @@ h1 {
   margin-bottom: 12px;
 }
 
+p {
+  margin: 8px 0;
+}
+
+li {
+  list-style-type: none;
+}
+
 button {
   font: inherit;
   font-weight: bold;
@@ -44,6 +52,14 @@ a {
 input:focus,
 textarea:focus {
   border-color: #0284c7;
+}
+
+/* message board */
+
+.message-board {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 /* new message form */
