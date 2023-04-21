@@ -1,8 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  padding: 24px;
+}
+
+h1 {
+  margin-bottom: 12px;
+}
+
+button {
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+input {
+  outline: none;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  padding: 6px;
 }
 
 a {
-  color: #00B7FF;
+  text-decoration: none;
+  color: #0284c7;
+  font-weight: bold;
+}
+
+input:focus {
+  border-color: #0284c7;
+}
+
+/* new message form */
+.create-message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.create-message > label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: bold;
+}
+
+.create-message > button {
+  padding: 10px 12px;
+  border-radius: 4px;
+  background-color: rgb(41, 41, 41);
+  color: #eee;
 }

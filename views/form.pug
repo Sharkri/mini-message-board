@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= "Submit a message"
-  form(action="/new", method="POST")
+  form.create-message(action="/new", method="POST")
     label
       | Name:
       input(type="text", name="name")
@@ -12,5 +12,4 @@ block content
       input(type="text", name="message")
 
     button(type="submit") Submit message
-
-  a(href="/") Go back
+    a(href="/") Go back
